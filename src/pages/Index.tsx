@@ -126,10 +126,10 @@ const Index = () => {
                         variant="outline"
                       >
                         <div className="text-left">
-                          <div className="font-semibold text-sm mb-1">
+                          <div className="font-semibold text-sm mb-1 leading-tight">
                             {String.fromCharCode(97 + index)}. {func.name}
                           </div>
-                          <div className="text-xs text-gray-600 font-normal">
+                          <div className="text-xs text-gray-600 font-normal leading-relaxed">
                             {func.description}
                           </div>
                         </div>
