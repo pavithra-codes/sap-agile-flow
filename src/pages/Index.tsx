@@ -8,7 +8,7 @@ const Index = () => {
     {
       id: 1,
       title: "Requirements",
-      description: "Define and document business needs",
+      description: "Create and document business needs",
       icon: <FileText className="h-8 w-8" />,
       color: "from-blue-600 to-blue-700",
       functions: [
@@ -46,7 +46,7 @@ const Index = () => {
     {
       id: 3,
       title: "Development",
-      description: "Build and document your SAP solutions",
+      description: "Create and document your SAP solutions",
       icon: <Code className="h-8 w-8" />,
       color: "from-green-600 to-green-700",
       functions: [
