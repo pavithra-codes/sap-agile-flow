@@ -13,14 +13,14 @@ const Index = () => {
       color: "from-blue-600 to-blue-700",
       functions: [
         {
-          name: "Business Requirement Document (BRD) Generation",
+          name: "Business Requirement Document (BRD) Generator",
           description: "Generate comprehensive BRDs automatically",
-          action: () => console.log("BRD Generation clicked")
+          action: () => console.log("BRD Generator clicked")
         },
         {
-          name: "User Story Generation",
+          name: "User Story Generator",
           description: "Create detailed user stories from requirements",
-          action: () => console.log("User Story Generation clicked")
+          action: () => console.log("User Story Generator clicked")
         }
       ]
     },
@@ -32,14 +32,14 @@ const Index = () => {
       color: "from-purple-600 to-purple-700",
       functions: [
         {
-          name: "Functional Specifications (FS) Generation",
+          name: "Functional Specifications (FS) Generator",
           description: "Generate detailed functional specifications",
-          action: () => console.log("FS Generation clicked")
+          action: () => console.log("FS Generator clicked")
         },
         {
-          name: "Technical Specifications (TS) Generation",
+          name: "Technical Specifications (TS) Generator",
           description: "Create comprehensive technical documentation",
-          action: () => console.log("TS Generation clicked")
+          action: () => console.log("TS Generator clicked")
         }
       ]
     },
@@ -53,7 +53,7 @@ const Index = () => {
         {
           name: "Code Documentation Generator",
           description: "Automatically generate code documentation",
-          action: () => console.log("Code Documentation clicked")
+          action: () => console.log("Code Documentation Generator clicked")
         }
       ]
     }
