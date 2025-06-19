@@ -1,9 +1,31 @@
 
+import { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileText, Code, Book, ArrowDown } from "lucide-react";
+import BRDForm from "@/components/forms/BRDForm";
+import UserStoryForm from "@/components/forms/UserStoryForm";
+import FSForm from "@/components/forms/FSForm";
+import TSForm from "@/components/forms/TSForm";
+import CodeDocumentationForm from "@/components/forms/CodeDocumentationForm";
 
 const Index = () => {
+  const [openForms, setOpenForms] = useState({
+    brd: false,
+    userStory: false,
+    fs: false,
+    ts: false,
+    codeDoc: false
+  });
+
+  const openForm = (formType: keyof typeof openForms) => {
+    setOpenForms(prev => ({ ...prev, [formType]: true }));
+  };
+
+  const closeForm = (formType: keyof typeof openForms) => {
+    setOpenForms(prev => ({ ...prev, [formType]: false }));
+  };
+
   const phases = [
     {
       id: 1,
@@ -15,12 +37,12 @@ const Index = () => {
         {
           name: "Create Business Requirement Document (BRD)",
           description: "Generate comprehensive BRDs automatically",
-          action: () => console.log("BRD Generator clicked")
+          action: () => openForm('brd')
         },
         {
           name: "Create User Stories",
           description: "Create detailed user stories from requirements",
-          action: () => console.log("User Story Generator clicked")
+          action: () => openForm('userStory')
         }
       ]
     },
@@ -34,12 +56,12 @@ const Index = () => {
         {
           name: "Create Functional Specifications (FS)",
           description: "Generate detailed functional specifications",
-          action: () => console.log("FS Generator clicked")
+          action: () => openForm('fs')
         },
         {
           name: "Create Technical Specifications (TS)",
           description: "Create comprehensive technical documentation",
-          action: () => console.log("TS Generator clicked")
+          action: () => openForm('ts')
         }
       ]
     },
@@ -53,7 +75,7 @@ const Index = () => {
         {
           name: "Create Code Documentation",
           description: "Automatically generate code documentation",
-          action: () => console.log("Code Documentation Generator clicked")
+          action: () => openForm('codeDoc')
         }
       ]
     }
@@ -96,18 +118,18 @@ const Index = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {phases.map((phase) => (
             <Card key={phase.id} className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border-0">
-              {/* Card Header with Gradient */}
-              <div className={`bg-gradient-to-r ${phase.color} text-white p-6`}>
-                <CardHeader className="p-0">
+              {/* Card Header with Gradient - Fixed height for uniformity */}
+              <div className={`bg-gradient-to-r ${phase.color} text-white p-6 h-32`}>
+                <CardHeader className="p-0 h-full flex justify-center">
                   <div className="flex items-center space-x-3">
-                    <div className="bg-white/20 rounded-lg p-2">
+                    <div className="bg-white/20 rounded-lg p-2 flex-shrink-0">
                       {phase.icon}
                     </div>
-                    <div>
-                      <CardTitle className="text-2xl font-bold text-white">
+                    <div className="min-w-0 flex-1">
+                      <CardTitle className="text-xl font-bold text-white leading-tight">
                         {phase.id}. {phase.title}
                       </CardTitle>
-                      <CardDescription className="text-white/90 mt-1">
+                      <CardDescription className="text-white/90 mt-1 text-sm leading-tight">
                         {phase.description}
                       </CardDescription>
                     </div>
@@ -125,8 +147,8 @@ const Index = () => {
                         className="w-full text-left justify-start h-auto p-4 bg-gray-50 hover:bg-gray-100 text-gray-900 border border-gray-200 hover:border-gray-300 transition-all duration-200"
                         variant="outline"
                       >
-                        <div className="text-left">
-                          <div className="font-semibold text-sm mb-1 leading-tight">
+                        <div className="text-left min-w-0 flex-1">
+                          <div className="font-semibold text-sm mb-1 leading-tight break-words">
                             {String.fromCharCode(97 + index)}. {func.name}
                           </div>
                           <div className="text-xs text-gray-600 font-normal leading-relaxed">
@@ -158,6 +180,28 @@ const Index = () => {
           </Card>
         </div>
       </div>
+
+      {/* Forms */}
+      <BRDForm 
+        open={openForms.brd} 
+        onOpenChange={() => closeForm('brd')} 
+      />
+      <UserStoryForm 
+        open={openForms.userStory} 
+        onOpenChange={() => closeForm('userStory')} 
+      />
+      <FSForm 
+        open={openForms.fs} 
+        onOpenChange={() => closeForm('fs')} 
+      />
+      <TSForm 
+        open={openForms.ts} 
+        onOpenChange={() => closeForm('ts')} 
+      />
+      <CodeDocumentationForm 
+        open={openForms.codeDoc} 
+        onOpenChange={() => closeForm('codeDoc')} 
+      />
     </div>
   );
 };
